@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dhruvil Joshi — AI Specialist Screening Exercise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* dark band (matches their charcoal sections) */
+    --dark-bg: hsl(220 13% 11%);
+    --dark-bg-deep: hsl(217 24% 9%);
+    --dark-fg: hsl(40 20% 91%);
+    --dark-muted: hsl(220 8% 66%);
+    --dark-border: hsl(220 10% 20%);
+    /* light band (matches their greige sections) */
+    --light-bg: hsl(40 14% 88%);
+    --paper: hsl(40 20% 95%);
+    --light-fg: hsl(217 26% 16%);
+    --light-muted: hsl(217 12% 40%);
+    --light-border: hsl(40 10% 78%);
+    /* shared */
+    --gold: hsl(42 52% 54%);
+    --gold-deep: hsl(43 45% 42%);
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "DM Sans", system-ui, sans-serif;
+    --script: "Caveat", cursive;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    font-size: 1.15rem;
+    line-height: 1.75;
+    background: var(--light-bg);
+    color: var(--light-fg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ---------- Top bar (like their light nav) ---------- */
+  .topbar {
+    background: var(--light-bg);
+    border-bottom: 1px solid var(--light-border);
+  }
+  .topbar .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.1rem;
+    padding-bottom: 1.1rem;
+  }
+  .topbar .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: var(--light-fg);
+  }
+  .topbar .role {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+  }
+
+  /* ---------- Hero (dark, like their photo hero) ---------- */
+  .hero {
+    background:
+      radial-gradient(ellipse 70% 90% at 80% 10%, hsl(42 52% 54% / 0.08), transparent 60%),
+      linear-gradient(180deg, hsl(216 28% 13%), var(--dark-bg-deep));
+    padding: 5.5rem 0 5rem;
+  }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 6.5vw, 4rem);
+    line-height: 1.12;
+    color: #fff;
+  }
+  .hero .goldline {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 3vw, 1.8rem);
+    line-height: 1.3;
+    margin-top: 1.4rem;
+    color: var(--gold);
+  }
+  .hero .site {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark-muted);
+  }
+  .hero .site:hover { color: var(--gold); }
+  .hero .rule {
+    width: 90px;
+    height: 1px;
+    background: hsl(40 20% 91% / 0.35);
+    border: none;
+    margin-top: 1.4rem;
+  }
+
+  /* ---------- Bands ---------- */
+  section { padding: 4.5rem 0 4.5rem; }
+  .band-dark {
+    background: var(--dark-bg);
+    color: var(--dark-fg);
+  }
+  .band-light {
+    background: var(--light-bg);
+    color: var(--light-fg);
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.8rem;
+  }
+  .band-dark .eyebrow { color: var(--gold); }
+
+  section h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4.5vw, 2.7rem);
+    line-height: 1.2;
+    margin-bottom: 1.8rem;
+  }
+  .band-dark h2 { color: #fff; }
+
+  /* ---------- Question block ---------- */
+  .question {
+    border-left: 2px solid var(--gold-deep);
+    padding: 0.35rem 0 0.35rem 1.3rem;
+    margin-bottom: 2rem;
+    max-width: 46rem;
+  }
+  .question .qlabel {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    margin-bottom: 0.25rem;
+  }
+  .band-dark .question .qlabel { color: var(--gold); }
+  .question p {
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--light-muted);
+  }
+  .band-dark .question p { color: var(--dark-muted); }
+
+  /* ---------- Paper card (like their "Why We Exist" card) ---------- */
+  .paper {
+    background: var(--paper);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 8px 28px hsl(217 26% 16% / 0.07);
+    padding: 2.4rem 2.6rem;
+    max-width: 46rem;
+  }
+  .paper p {
+    font-family: var(--serif);
+    font-size: 1.18rem;
+    line-height: 1.85;
+    color: var(--light-fg);
+  }
+  .paper p + p { margin-top: 1.1rem; }
+  .signature {
+    font-family: var(--script);
+    font-size: 2.1rem;
+    color: var(--light-fg);
+    margin-top: 1.6rem;
+    line-height: 1;
+  }
+
+  /* ---------- Dark numbered grid (like their 01–04 section) ---------- */
+  .num-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 3.5rem;
+    margin-top: 2.5rem;
+  }
+  .num-item .ghost {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
+  }
+  .num-item .ghost::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--dark-border);
+  }
+  .num-item h3 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.32rem;
+    color: #fff;
+    margin-bottom: 0.7rem;
+  }
+  .num-item ul { list-style: none; }
+  .num-item ul li {
+    position: relative;
+    padding-left: 1.3rem;
+    margin-bottom: 0.65rem;
+    font-size: 1.08rem;
+    color: hsl(40 15% 82%);
+  }
+  .num-item ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.75em;
+    width: 0.55rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ---------- Knowledge check cards (light) ---------- */
+  .qa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    margin-top: 0.5rem;
+  }
+  .qa {
+    background: var(--paper);
+    border: 1px solid var(--light-border);
+    box-shadow: 0 6px 20px hsl(217 26% 16% / 0.06);
+    padding: 1.6rem 1.8rem;
+  }
+  .qa .qnum {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--gold-deep);
+    margin-bottom: 0.45rem;
+  }
+  .qa .q {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--light-muted);
+    padding-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px solid var(--light-border);
+  }
+  .qa .a {
+    font-size: 1.07rem;
+    line-height: 1.7;
+    color: var(--light-fg);
+  }
+
+  /* ---------- Dark prose (section D) ---------- */
+  .band-dark .prose {
+    max-width: 46rem;
+    color: hsl(40 15% 84%);
+  }
+
+  /* ---------- Footer (light, like theirs) ---------- */
+  footer {
+    background: var(--light-bg);
+    border-top: 1px solid var(--light-border);
+    padding: 2.6rem 0 3rem;
+  }
+  footer .wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  footer .fname {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--light-fg);
+  }
+  footer .fmeta {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--light-muted);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .num-grid, .qa-grid { grid-template-columns: 1fr; }
+    .paper { padding: 1.8rem 1.6rem; }
+    .topbar .role { display: none; }
+    section { padding: 3.2rem 0; }
+    .hero { padding: 3.8rem 0 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="name">Dhruvil Joshi</span>
+    <span class="role">AI Specialist — Screening Exercise</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Dhruvil Joshi</h1>
+    <a class="site" href="https://www.dhruvil.me">www.dhruvil.me</a>
+    <hr class="rule" />
+    <p class="goldline">AI Specialist - Screening Exercise</p>
+  </div>
+</header>
+
+<main>
+
+  <!-- Section A — light -->
+  <section class="band-light" id="a">
+    <div class="wrap">
+      <p class="eyebrow">Section A</p>
+      <h2>The &ldquo;why,&rdquo; in my own words</h2>
+      <div class="question">
+        <p class="qlabel">Question</p>
+        <p>In 4–6 sentences: what does moving this out of a single chat and into a deployed, orchestrated system actually get the business? Focus on the objective and the people, not the technology.</p>
+      </div>
+      <div class="paper">
+        <p>The single chat isn't a viable setup for Valeon - everything lives in one conversation that one person backs up by hand, so the firm's whole capability depends on him. Moving to a real system gives Valeon control over the logic in each step, which can be improved or run independently without affecting the rest. It means more deals handled in parallel, in less time, with senior people spending their hours on judgment and clients instead of driving a chat. For the client, things move faster and the results are more consistent.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section B — dark, numbered like their "Why We're Different" -->
+  <section class="band-dark" id="b">
+    <div class="wrap">
+      <p class="eyebrow">Section B</p>
+      <h2>The approach</h2>
+      <div class="question">
+        <p class="qlabel">Question</p>
+        <p>In broad strokes, how would you restructure this? Breaking up the monolith and what coordinates it; running the whole workflow versus one module; where the human approval points live; and where connectors, sign-in, and storage fit.</p>
+      </div>
+      <div class="num-grid">
+
+        <div class="num-item">
+          <span class="ghost">01</span>
+          <h3>Breaking the monolith - and what coordinates it</h3>
+          <ul>
+            <li>Multi-agent system: each agent handles one module's logic.</li>
+            <li>In the center, a single orchestrator agent (a smart, heavy model for better decisions) is the only thing the user talks to - it holds the deal's state and passes structured outputs from one module to the next.</li>
+          </ul>
+        </div>
+
+        <div class="num-item">
+          <span class="ghost">02</span>
+          <h3>The whole workflow versus one module</h3>
+          <ul>
+            <li>Because the monolith is decomposed, the orchestrator can run the full pipeline or just one part.</li>
+            <li>A single module (e.g., valuation) works standalone because it pulls what it needs from stored deal data, not from a chat history.</li>
+          </ul>
+        </div>
+
+        <div class="num-item">
+          <span class="ghost">03</span>
+          <h3>Human approval points</h3>
+          <ul>
+            <li>Wherever stakes are high or human judgment is needed (like the thesis check before documents go out), the workflow pauses for human approval.</li>
+            <li>A toggle per run switches between &ldquo;pause at gates&rdquo; and fully automated - and who's allowed to flip that toggle is itself permission-controlled.</li>
+          </ul>
+        </div>
+
+        <div class="num-item">
+          <span class="ghost">04</span>
+          <h3>Connectors, sign-in, and storage</h3>
+          <ul>
+            <li>The whole system sits behind an authorization layer; per account we add integrations (deal CRM, Gmail, more later via OAuth).</li>
+            <li>Persistent storage (relational + vector DB, plus a document store) holds every file and output per deal, so nothing is trapped in a chat.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section C — light cards -->
+  <section class="band-light" id="c">
+    <div class="wrap">
+      <p class="eyebrow">Section C</p>
+      <h2>Knowledge checks</h2>
+      <div class="qa-grid">
+
+        <div class="qa">
+          <p class="qnum">C1</p>
+          <p class="q">Improving one module's playbook over time without letting every user change it - and being able to undo a change. What mechanism(s)?</p>
+          <p class="a">Version control with permissions: a small set of editors can change a playbook, changes are released as tagged versions, and everyone else consumes the released version. Undoing a change is just rolling back to the previous tag.</p>
+        </div>
+
+        <div class="qa">
+          <p class="qnum">C2</p>
+          <p class="q">Run in one chat, the process &ldquo;drifts.&rdquo; Why does breaking it into modules reduce that, and what makes a module behave the same each run?</p>
+          <p class="a">Longer chats degrade outputs because weeks of accumulated, unnecessary information ends up in context window, and the model's outputs starts drifting. Moving away from a single chat, every agent has its own context and access only to what it needs. This makes each module behave consistently each run - we pin its system prompt, keep temperature low, and require a fixed output format.</p>
+        </div>
+
+        <div class="qa">
+          <p class="qnum">C3</p>
+          <p class="q">The deal CRM only supports spreadsheet export/import. How would you design that round-trip so it stays reliable if the workflow is re-run?</p>
+          <p class="a">Validate the file at both ends of the round-trip - expected columns, no missing or duplicate IDs - so the agents and the CRM always get what they expect. And give every row a permanent unique ID (deal + investor) that the import matches on, updating existing rows instead of adding new ones, so a re-run refreshes the data instead of duplicating it.</p>
+        </div>
+
+        <div class="qa">
+          <p class="qnum">C4</p>
+          <p class="q">One way a multi-step, AI-driven pipeline can fail quietly - and one thing you'd put in place to catch it.</p>
+          <p class="a">In a multistep pipeline we need to check the outputs of each module because the output of one module will be the input of the next. The outputs might have correct structure but could still be wrong, so even a single bad output can pollute the chain ahead. We need to put observability in the workflow plus simple checks in between so bad output gets flagged at the step that produced it.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section D — dark -->
+  <section class="band-dark" id="d">
+    <div class="wrap">
+      <p class="eyebrow">Section D</p>
+      <h2>Where I would start</h2>
+      <div class="question">
+        <p class="qlabel">Question</p>
+        <p>With roughly two weeks and one engineer: what would you ship first, and what would you deliberately leave for later?</p>
+      </div>
+      <div class="prose">
+        <p>My first point of action for these two weeks would be to decompose the workflow from that single chat into a modular workflow. Goal would be simply to connect all these modular agents together and make the whole workflow work just like it did for the 5 clients already with that single chat. Once this core workflow is working only then we can move to making the whole experience better. Things like full automations, other integrations which would be useful, having a good-looking interface for the whole system etc. could be done later. First make it work and then make it better.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="fname">Dhruvil Joshi</span>
+    <span class="fmeta">AI Specialist — Screening Exercise</span>
+    <span class="fmeta">July 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
